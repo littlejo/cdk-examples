@@ -1,0 +1,18 @@
+{
+    "global" : {
+        "project" : "fargate-isolated",
+        "extension": "fargate-isolated."
+    },
+    "dev" : {
+        "vpc_name" : "vpc-dev",
+	"vpc_cidr" : "10.0.0.0/16",
+        "vpc_az" : 3,
+        "subnet_cidr_mask" : 24
+    },
+    "prod" : {
+        "vpc_name" : "vpc-prod",
+	"vpc_cidr" : "10.1.0.0/16",
+        "vpc_az" : 3,
+        "subnet_cidr_mask" : 24
+    }
+}
