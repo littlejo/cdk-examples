@@ -30,6 +30,7 @@ env = core.Environment(
 )
 
 EnvironmentStack(app, f"env-{stage}", tags=common_tags, name_extension=global_conf["global"]["extension"]+stage, stage=stage, conf=global_conf, env=env )
-ECRStack(app, f"ecr-{stage}", tags=common_tags, name_extension=global_conf["global"]["extension"]+stage, stage=stage , vpc_name=global_conf[stage]["vpc_name"] , region=os.environ["CDK_DEFAULT_REGION"], env=env)
+ECRStack(app, f"ecr-{stage}", tags=common_tags, name_extension=global_conf["global"]["extension"]+stage, stage=stage , vpc_name=global_conf[stage]["vpc_name"] , region=os.environ["CDK_DEFAULT_REGION"], env=env, ecs_conf=global_conf[stage]["ecs"]["nginx-1"])
+ECRStack(app, f"ecr-2-{stage}", tags=common_tags, name_extension=global_conf["global"]["extension"]+stage, stage=stage , vpc_name=global_conf[stage]["vpc_name"] , region=os.environ["CDK_DEFAULT_REGION"], env=env, ecs_conf=global_conf[stage]["ecs"]["nginx-2"])
 
 app.synth()

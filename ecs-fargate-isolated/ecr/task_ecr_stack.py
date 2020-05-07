@@ -12,7 +12,7 @@ sys.path.insert(0,'..')
 import base_platform as bp
 
 class ECRStack(core.Stack):
-    def __init__(self, scope: core.Construct, id: str, name_extension: str, stage:str, tags:[], vpc_name:str, region:str, **kwargs) -> None:
+    def __init__(self, scope: core.Construct, id: str, name_extension: str, stage:str, tags:[], vpc_name:str, region:str, ecs_conf:dict, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
 
         self.base_platform = bp.BasePlatform(self, id, name_extension, stage, vpc_name)
@@ -23,7 +23,7 @@ class ECRStack(core.Stack):
         self.fargate_task_def = _ecs.FargateTaskDefinition(
             self, 
             "lz-nginx-ecr-td",
-            family=f'nginx-ecr-{stage}',
+            family=ecs_conf["task_name"],
             cpu=256,
             memory_limit_mib=512,
         )
@@ -55,9 +55,9 @@ class ECRStack(core.Stack):
             desired_count=1,
             cloud_map_options=_ecs.CloudMapOptions(
                 cloud_map_namespace=self.base_platform.sd_namespace,
-                name='ecs-ecr-nginx'
+                name=ecs_conf["dns_name"]
             ),
-            service_name=f'nginx-ecr-{stage}',
+            service_name=ecs_conf["service_name"],
         )
 
         self.objects_list.append(self.ecr)
