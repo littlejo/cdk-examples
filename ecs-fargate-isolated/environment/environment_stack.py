@@ -62,7 +62,7 @@ class EnvironmentStack(core.Stack):
         self.objects_list.append(self.s3_ep)
 
         self.objects_list.append(self.vpc)
-        core.Tag.add(self.vpc, "Name", f"vpc-poc-{stage}")
+        core.Tag.add(self.vpc, "Name", conf[stage]["vpc_name"])
 
     def cluster_creation(self, name_extension, stage):
         # Creating ECS Cluster in the VPC created above
