@@ -57,6 +57,7 @@ class ECRStack(core.Stack):
                 name=ecs_conf["dns_name"]
             ),
             service_name=ecs_conf["service_name"],
+            platform_version=_ecs.FargatePlatformVersion.VERSION1_4,
         )
 
         self.objects_list.append(self.ecr)
