@@ -4,7 +4,6 @@ from aws_cdk import (
     aws_ecs as _ecs,
     aws_ecr as _ecr,
     aws_iam as _iam,
-    aws_servicediscovery as _servicediscovery
 )
 
 import sys
