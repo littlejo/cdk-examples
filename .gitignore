@@ -3,3 +3,5 @@ __pycache__
 *.swp
 cdk.context.json
 package-lock.json
+.*
+
