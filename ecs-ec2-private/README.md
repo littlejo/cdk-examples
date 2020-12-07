@@ -1,7 +1,4 @@
-# Dependencies
 
-* you need to create nginx ecr and push from nginx docker hub
-   * More info: install-nginx-ecr.sh
 
 # What's it done
 
