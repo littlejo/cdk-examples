@@ -6,6 +6,7 @@
 
 * create a vpc
 * create 3 isolated subnets on each az (if there are 3 az on the region)
+* create ec2 
 * create an ecs cluster
 
 ## ecr-dev stack
