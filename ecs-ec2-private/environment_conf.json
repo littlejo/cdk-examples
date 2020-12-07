@@ -1,0 +1,48 @@
+{
+    "global" : {
+        "project" : "rabbitmq-private",
+        "extension": "rabbitmq-private."
+    },
+    "dev" : {
+        "vpc_name" : "vpc-dev",
+	"vpc_cidr" : "10.0.0.0/16",
+        "vpc_az" : 3,
+        "subnet_cidr_mask" : 24,
+        "nat_gateways_num" : 2,
+        "ecs" : {
+            "rabbitmq-1": {
+	      "service_name": "rabbitmq-dev",
+	      "task_name": "rabbitmq-dev",
+	      "dns_name": "ecs-rabbitmq"
+            },
+            "rabbitmq-2": {
+	      "service_name": "rabbitmq-2-dev",
+	      "task_name": "rabbitmq-2-dev",
+	      "dns_name": "rabbitmq-2"
+            },
+            "rabbitmq-3": {
+	      "service_name": "rabbitmq-3-dev",
+	      "task_name": "rabbitmq-3-dev",
+	      "dns_name": "rabbitmq-3"
+            }
+	}
+    },
+    "prod" : {
+        "vpc_name" : "vpc-prod",
+	"vpc_cidr" : "10.1.0.0/16",
+        "vpc_az" : 3,
+        "subnet_cidr_mask" : 24,
+        "ecs" : {
+            "nginx-1": {
+	      "service_name": "nginx-ecr-dev",
+	      "task_name": "nginx-ecr-dev",
+	      "dns_name": "ecs-ecr-nginx"
+            },
+            "nginx-2": {
+	      "service_name": "nginx-2-dev",
+	      "task_name": "nginx-2-dev",
+	      "dns_name": "ecs-2-nginx"
+            }
+	}
+    }
+}
